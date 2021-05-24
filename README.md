@@ -1,21 +1,15 @@
 # ElixirMsg
 
-**TODO: Add description**
+A super simple telnet messaging server written in Elixir to learn more about OTP and GenServers.
 
-## Installation
+Run using
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elixir_msg` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:elixir_msg, "~> 0.1.0"}
-  ]
-end
+```
+mix run --no-halt
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/elixir_msg](https://hexdocs.pm/elixir_msg).
+Connect to the server using
 
+```sh
+telnet <ip> 4000
+```
