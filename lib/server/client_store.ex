@@ -17,6 +17,13 @@ defmodule Server.ClientStore do
   end
 
   @impl true
+  def handle_cast({:rename_client, from, to_}, clients) do
+    inverted = Map.new(clients, fn {key, val} -> {val, key} end)
+    sock = inverted |> Map.get(from)
+    {:noreply, Map.put(clients, sock, to_)}
+  end
+
+  @impl true
   def handle_cast({:delete_client, socket}, clients) do
     {:noreply, Map.delete(clients, socket)}
   end
@@ -31,6 +38,10 @@ defmodule Server.ClientStore do
 
   def delete_client(socket) do
     GenServer.cast(__MODULE__, {:delete_client, socket})
+  end
+
+  def rename_client(from, to_) do
+    GenServer.cast(__MODULE__, {:rename_client, from, to_})
   end
 
   def get_clients() do
